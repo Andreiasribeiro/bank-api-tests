@@ -1,0 +1,21 @@
+{
+  "name": "bank-api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/**/*.test.js --timeout 200000",
+    "report": "mocha ./test/**/*.test.js --reporter mochawesome"
+  },
+  "keywords": [],
+  "author": "Andreia Ribeiro",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "moch": "^0.0.1",
+    "mocha": "^11.7.5",
+    "mochawesome": "^7.1.4",
+    "supertest": "^7.2.2"
+  }
+}
