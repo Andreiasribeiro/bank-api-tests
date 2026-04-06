@@ -25,7 +25,8 @@ The goal is to validate endpoints, ensure reliability, and verify expected behav
 ## 📁 Project Structure
 
 bank-api-tests/
-│
+
+```
 ├── test/
 │ ├── login.test.js # Authentication tests
 │ └── transfer.test.js # Money transfer tests
@@ -35,7 +36,8 @@ bank-api-tests/
 ├── .env # Environment variables (must be created)
 ├── .gitignore
 ├── package.json
-└── README.md
+└── README.md 
+```
 
 ---
 
