@@ -43,7 +43,7 @@ bank-api-tests/
 
 ## ⚙️ Environment Configuration (.env)
 
-You must create a `.env` file in the root directory with the following structure:
+Before running the test, you must create a `.env` file in the root directory with the following structure:
 BASE_URL=http://localhost:3000
 
 Replace the URL with the correct API endpoint if necessary.
