@@ -5,15 +5,17 @@ const request = require("supertest");
 // Import 'chai' for expressive and readable assertions
 // 'expect' style allows chaining assertions like expect(value).to.equal(expected)
 const { expect } = require("chai");
+require("dotenv").config();
+const postLogin = require("../fixtures/postLogin.json");
 
 // Test suite for login functionality
 describe("login", () => {
   // Nested suite for the POST /login endpoint
   describe("POST /login", () => {
     // Test case: should return status 200 and a token string for valid credentials
-    it("Deve retornar 200 com um token string quando usar credenciais válidas", async () => {
+    it("Should return 200 with a string token when using valid credentials", async () => {
       // Make a POST request to /login with valid credentials
-      const resposta = await request("http://localhost:3000")
+      const response = await request(process.env.BASE_URL)
         .post("/login")
         .set("Content-Type", "application/json")
         .send({
@@ -23,12 +25,12 @@ describe("login", () => {
 
       //console.log(resposta.status);
       //console.log(resposta.body);
-      
+
       // Validate response status code
-      expect(resposta.status).to.equal(200);
+      expect(response.status).to.equal(200);
 
       // Validate that the response body contains a token of type string
-      expect(resposta.body.token).to.be.a("string");
+      expect(response.body.token).to.be.a("string");
     });
   });
 });
