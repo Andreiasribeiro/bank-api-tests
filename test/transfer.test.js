@@ -60,5 +60,6 @@ describe("transferencias", () => {
       expect(response.status).to.equal(200);
       expect(response.body.limit).to.equal(10);
       expect(response.body.transferencias).to.have.lengthOf(10);
+    });
   });
-})
+});
