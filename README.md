@@ -1,8 +1,5 @@
 # Bank API Tests
 
-## 📌 Project Name
-Bank API Tests
-
 ## 🎯 Objective
 This project aims to automate REST API testing for the Bank API developed by Júlio de Lima:
 https://github.com/juliodelimas/banco-api
