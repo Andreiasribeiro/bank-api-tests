@@ -43,6 +43,13 @@ describe("transferencias", () => {
 
       expect(response.status).to.equal(400);
     });
+    it("Should return 401 when token is not provided", async () => {
+      const response = await request(process.env.BASE_URL)
+        .post("/transferencias")
+        .send(postTransfers);
+
+      expect(response.status).to.equal(401);
+    });
   });
   describe("GET /transferencias/{id}", () => {
     it("Should return 200 and the transfer data matching the database record when the ID is valid", async () => {
