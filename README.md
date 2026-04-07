@@ -90,3 +90,30 @@ To view the report:
 ## 👩‍💻 Author
 
 Andréia Ribeiro
+
+## 🔍 Known Issues / Findings
+
+### 🐞 Incorrect Status Code for Missing Fields in Transfer Creation
+
+**Endpoint:** `POST /transferencias`
+
+**Description:**  
+When sending a request without required fields, the API returns an incorrect status code.
+
+**Steps to Reproduce:**
+1. Send POST `/transferencias`
+2. Add Authorization header
+3. Send empty body `{}`
+
+**Expected Result:**  
+`400 Bad Request`
+
+**Actual Result:**  
+`404 Not Found`
+
+**Impact:**
+- Breaks API contract defined in Swagger
+- Incorrect error handling for clients
+
+**Status:**  
+⚠️ Identified during automated testing
