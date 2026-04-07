@@ -50,6 +50,21 @@ describe("transferencias", () => {
 
       expect(response.status).to.equal(401);
     });
+    it("Should require transaction token for transfers above 5000", async () => {
+      const bodyTranfers = {
+        ...postTransfers,
+        valor: 6000, // transfer amount above 5000
+        // token field is intentionally omitted to test required transaction token
+      };
+
+      const response = await request(process.env.BASE_URL)
+        .post("/transferencias")
+        .set("Authorization", `Bearer ${token}`) // regular user token
+        .send(bodyTranfers);
+
+      // API should return 401 for missing transaction token
+      expect(response.status).to.equal(401);
+    });
   });
   describe("GET /transferencias/{id}", () => {
     it("Should return 200 and the transfer data matching the database record when the ID is valid", async () => {
