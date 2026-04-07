@@ -21,20 +21,25 @@ The goal is to validate endpoints, ensure reliability, and verify expected behav
 
 ## 📁 Project Structure
 
-bank-api-tests/
-
 ```
+bank-api-tests/
 ├── test/
-│   ├── login.test.js # Authentication tests
-│   └── transfer.test.js # Money transfer tests
+│   ├── login.test.js           # Authentication tests
+│   ├── transfer.test.js        # Money transfer tests
+│   └── accounts.test.js        # Account tests 
 │
-├── bugs/ # Documented bugs found during testing
+├── bugs/                       # Documented bugs found during testing
 │   ├── BUG-001-Incorrect-status-code-for-missing-fields.md
-│   └── BUG-002-Missing-transaction-token-for-transfers-above-5000.md
+│   ├── BUG-002-Missing-transaction-token-for-transfers-above-5000.md
+│   ├── BUG-003-Pagination-limit-not-respected-in-contas.md
+│   ├── BUG-004-saldo-returned-as-string.md
+│   ├── BUG-005-account-not-found-returns-200-instead-of-404.md
+│   └── BUG-006-API-returns-200-for-non-integer-account-ID.md
 │
-├── mochawesome-report/ # Generated HTML reports
-│
-├── .env # Environment variables (must be created)
+├── fixtures/                  # JSON payloads for tests
+├── helpers/                   # Helper functions (e.g., authentication)
+├── mochawesome-report/        # Generated HTML reports
+├── .env                       # Environment variables
 ├── .gitignore
 ├── package.json
 └── README.md
@@ -95,29 +100,15 @@ To view the report:
 
 Andréia Ribeiro
 
-## 🔍 Known Issues / Findings
+## 🔍 Known Issues
 
-### 🐞 Incorrect Status Code for Missing Fields in Transfer Creation
+Some issues were identified during automated API testing.
 
-**Endpoint:** `POST /transferencias`
+- Incorrect status code for missing fields in `POST /transferencias`
+- Missing transaction token validation for transfers above 5000
+- Pagination limit not respected in `GET /contas`
+- `saldo` returned as string instead of number
+- `GET /contas/{id}` returns 200 for non-existent accounts
+- `GET /contas/{id}` accepts invalid (non-integer) IDs
 
-**Description:**  
-When sending a request without required fields, the API returns an incorrect status code.
-
-**Steps to Reproduce:**
-1. Send POST `/transferencias`
-2. Add Authorization header
-3. Send empty body `{}`
-
-**Expected Result:**  
-`400 Bad Request`
-
-**Actual Result:**  
-`404 Not Found`
-
-**Impact:**
-- Breaks API contract defined in Swagger
-- Incorrect error handling for clients
-
-**Status:**  
-⚠️ Identified during automated testing
+📂 For detailed bug reports, see the [bugs folder](./bugs/).
