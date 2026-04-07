@@ -35,6 +35,14 @@ describe("transferencias", () => {
 
       expect(response.status).to.equal(422);
     });
+    it("Should return 400 when required fields are missing", async () => {
+      const response = await request(process.env.BASE_URL)
+        .post("/transferencias")
+        .set("Authorization", `Bearer ${token}`)
+        .send({});
+
+      expect(response.status).to.equal(400);
+    });
   });
   describe("GET /transferencias/{id}", () => {
     it("Should return 200 and the transfer data matching the database record when the ID is valid", async () => {
