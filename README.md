@@ -25,15 +25,19 @@ bank-api-tests/
 
 ```
 ├── test/
-│ ├── login.test.js # Authentication tests
-│ └── transfer.test.js # Money transfer tests
+│   ├── login.test.js # Authentication tests
+│   └── transfer.test.js # Money transfer tests
+│
+├── bugs/ # Documented bugs found during testing
+│   ├── BUG-001-Incorrect-status-code-for-missing-fields.md
+│   └── BUG-002-Missing-transaction-token-for-transfers-above-5000.md
 │
 ├── mochawesome-report/ # Generated HTML reports
 │
 ├── .env # Environment variables (must be created)
 ├── .gitignore
 ├── package.json
-└── README.md 
+└── README.md
 ```
 
 ---
